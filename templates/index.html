@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORDLE SOLVER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <div class="container">
+        <header class="glass-card">
+            <h1 class="neon-title">WORDLE SOLVER <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Entropy-powered AI · Solves in ≤4 guesses</p>
+            <div class="divider"></div>
+        </header>
+
+        <main>
+            <div class="game-section">
+                <div id="game-board" class="glass-card">
+                    <!-- Wordle board tiles will be dynamically added here by JavaScript -->
+                </div>
+
+                <div id="feedback-panel" class="glass-card hidden">
+                    <h2>Your Feedback</h2>
+                    <div id="current-guess-feedback" class="guess-row">
+                        <!-- Solver's guess tiles for feedback will be here -->
+                    </div>
+                    <button id="submit-feedback" class="glow-button">Submit Feedback</button>
+                    <div id="loading-spinner" class="spinner hidden"></div>
+                </div>
+
+                <div id="victory-state" class="glass-card hidden">
+                    <!-- Victory message and confetti here -->
+                    <h2 class="neon-title">🎉 Solved in <span id="guesses-count-victory"></span> guesses!</h2>
+                    <p class="solved-word"></p>
+                </div>
+
+                <div id="failure-state" class="glass-card hidden">
+                    <h2>Hmm, tough one. Try a new game.</h2>
+                </div>
+
+            </div>
+
+            <aside class="stats-section glass-card">
+                <h2>Stats</h2>
+                <p>Remaining Candidates: <span id="remaining-candidates">2309</span></p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p>Guess <span id="current-guess-number">0</span> of 6</p>
+
+                <button id="toggle-candidates" class="outline-button">Show Candidates</button>
+                <div id="candidates-list" class="glass-scroll-box hidden">
+                    <!-- Candidates will be loaded here -->
+                </div>
+
+                <button id="new-game-button" class="outline-button">New Game</button>
+            </aside>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
